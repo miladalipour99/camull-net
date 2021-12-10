@@ -25,9 +25,9 @@ def save_weights(model_in, uuid_arg, fold=1, task: Task = None):
     root_path = ""
 
     if task == Task.NC_v_AD:
-        root_path = "../weights/NC_v_AD/"     + uuid_arg + "/"
+        root_path = "/content/drive/MyDrive/weights/NC_v_AD/"     + uuid_arg + "/"
     else:
-        root_path = "../weights/sMCI_v_pMCI/" + uuid_arg + "/"
+        root_path = "/content/drive/MyDrive/weights/sMCI_v_pMCI/" + uuid_arg + "/"
 
     if fold == 1:
         os.mkdir(root_path) #otherwise it already exists
@@ -133,9 +133,9 @@ def start(ld_helper, epochs=40, model_uuid=None):
 def main():
     '''Main function of the module.'''
     #NC v AD
-    #ld_helper = LoaderHelper(task=Task.NC_v_AD)
-    #model_uuid = train_camull(ld_helper, epochs=40)
-    #evaluate_model(DEVICE, "c51bf83c4455416e8bc8b1ebbc8b75ca", ld_helper)
+    ld_helper = LoaderHelper(task=Task.NC_v_AD)
+    model_uuid = train_camull(ld_helper, epochs=40)
+    evaluate_model(DEVICE, "c51bf83c4455416e8bc8b1ebbc8b75ca", ld_helper)
 
     #transfer learning for pMCI v sMCI
     # ld_helper.change_task(Task.sMCI_v_pMCI)
