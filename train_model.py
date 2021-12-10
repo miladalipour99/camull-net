@@ -25,7 +25,7 @@ def save_weights(model_in, uuid_arg, fold=1, task: Task = None):
     root_path = ""
 
     if task == Task.NC_v_AD:
-        root_path = "/content/drive/MyDrive/weights/NC_v_AD/"     + uuid_arg + "/"
+        root_path = "/content/drive/MyDrive/weights/CN_v_AD/"     + uuid_arg + "/"
     else:
         root_path = "/content/drive/MyDrive/weights/sMCI_v_pMCI/" + uuid_arg + "/"
 
