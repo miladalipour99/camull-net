@@ -35,7 +35,7 @@ def evaluate_model(device_in, uuid, ld_helper):
     data_pbar = manager.counter(total=0, desc='Data', unit='batches')
 
 
-    log_path = "../logs/" + uuid + ".txt"
+    log_path = "/content/logs/" + uuid + ".txt"
 
     if (os.path.exists(log_path)):
         filein     = open(log_path, 'a')
@@ -55,7 +55,7 @@ def evaluate_model(device_in, uuid, ld_helper):
     tot_acc = 0; tot_sens = 0; tot_spec = 0; tot_roc_auc = 0
     fold = 0
 
-    srch_path = "../weights/{}/".format(task_str) + uuid + "/*"
+    srch_path = "/content/weights/{}/".format(task_str) + uuid + "/*"
     for path in glob.glob(srch_path):
 
         print("Evaluating fold: ", fold + 1)
@@ -65,8 +65,8 @@ def evaluate_model(device_in, uuid, ld_helper):
         test_dl = ld_helper.get_test_dl(fold)
         data_pbar.total = len(test_dl)
 
-        if (not os.path.exists("../graphs/" + uuid)) : os.mkdir("../graphs/" + uuid)
-        metrics = get_roc_auc(model, test_dl, figure=True, path = "../graphs/" + uuid, fold=fold+1)
+        if (not os.path.exists("/content/graphs/" + uuid)) : os.mkdir("/content/graphs/" + uuid)
+        metrics = get_roc_auc(model, test_dl, figure=True, path = "/content/graphs/" + uuid, fold=fold+1)
         accuracy, sensitivity, specificity, roc_auc, you_max, you_thresh = [*metrics]
 
         print("Evaluated fold: {}".format(fold+1))
@@ -148,7 +148,7 @@ def get_roc_auc(model_in, test_dl, figure=False, path=None, fold=1):
     if(figure):
 
         if (path == None):
-            path = "../graphs/auc-{date:%Y-%m-%d_%H:%M:%S}.png".format(date=datetime.datetime.now())
+            path = "/content/graphs/auc-{date:%Y-%m-%d_%H:%M:%S}.png".format(date=datetime.datetime.now())
         else:
             #append dir
             path = path + "/auc-fold{}-{date:%Y-%m-%d_%H:%M:%S}.png".format(fold, date=datetime.datetime.now())
