@@ -30,7 +30,8 @@ def save_weights(model_in, uuid_arg, fold=1, task: Task = None):
         root_path = "/content/weights/sMCI_v_pMCI/" + uuid_arg + "/"
 
     if fold == 1:
-        os.mkdir(root_path) #otherwise it already exists
+        os.makedirs(root_path,exist_ok=True)
+     ###########   os.mkdir(root_path) #otherwise it already exists
 
     while True:
 
