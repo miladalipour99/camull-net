@@ -66,8 +66,24 @@ def evaluate_model(device_in, uuid, ld_helper):
         model.to(device)
         test_dl = ld_helper.get_test_dl(fold)
         data_pbar.total = len(test_dl)
+        ##############################################################################################
+ #       def save_weights(model_in, uuid_arg, fold=1, task: Task = None):
+   # '''The following function saves the weights file into required folder'''
+  #  root_path = ""
 
-        if (not os.path.exists("/content/graphs/" + uuid)) : os.mkdir("/content/graphs/" + uuid)
+    #if task == Task.NC_v_AD:
+     #   root_path = "/content/weights/CN_v_AD/"     + uuid_arg + "/"
+   # else:
+    #    root_path = "/content/weights/sMCI_v_pMCI/" + uuid_arg + "/"
+
+    #if fold == 1:
+     #   os.makedirs(root_path,exist_ok=True)
+     ###########   os.mkdir(root_path) #otherwise it already exists
+
+        ##############################################################################################
+       # if (not os.path.exists("/content/graphs/" + uuid)) : os.mkdir("/content/graphs/" + uuid)
+        root_path11 = "/content/graphs/" +uuid 
+        os.makedirs(root_path11,exist_ok=True)
         metrics = get_roc_auc(model, test_dl, figure=True, path = "/content/graphs/" + uuid, fold=fold+1)
         accuracy, sensitivity, specificity, roc_auc, you_max, you_thresh = [*metrics]
 
