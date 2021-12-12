@@ -36,6 +36,8 @@ def evaluate_model(device_in, uuid, ld_helper):
 
 
     log_path = "/content/logs/" + uuid + ".txt"
+    log_path1="/content/logs/"
+    os.makedirs(log_path1,exist_ok=True)
 
     if (os.path.exists(log_path)):
         filein     = open(log_path, 'a')
