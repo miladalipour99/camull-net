@@ -134,8 +134,8 @@ def main():
     '''Main function of the module.'''
     #NC v AD
     ld_helper = LoaderHelper(task=Task.NC_v_AD)
-    #model_uuid = train_camull(ld_helper, epochs=1)
-    #evaluate_model(DEVICE, "c51bf83c4455416e8bc8b1ebbc8b75ca", ld_helper)
+    model_uuid = train_camull(ld_helper, epochs=1)
+    evaluate_model(DEVICE, "c51bf83c4455416e8bc8b1ebbc8b75ca", ld_helper)
 
     #transfer learning for pMCI v sMCI
     ld_helper.change_task(Task.sMCI_v_pMCI)
