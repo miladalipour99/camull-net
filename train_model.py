@@ -48,9 +48,9 @@ def load_model(arch, path=None):
     if arch == "camull": #must be camull
 
         if path is None:
-            model = load_cam_model("/content/weights/camnet/fold_0_weights-2020-04-09_18_29_02")
-        else:
             model = load_cam_model(path)
+        else:
+            model = load_cam_model("/content/weights/camnet/fold_0_weights-2020-04-09_18_29_02")
 
 
     return model
