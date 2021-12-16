@@ -138,7 +138,8 @@ def main():
     ld_helper = LoaderHelper(task=Task.NC_v_AD)
     #model_uuid = train_camull(ld_helper, epochs=1)
    # evaluate_model(DEVICE, train_camull.variable, ld_helper)
-    ld_helper.change_task(Task.sMCI_v_pMCI)
+   # ld_helper.change_task(Task.sMCI_v_pMCI)
+    ld_helper = LoaderHelper(task=Task.sMCI_v_pMCI)
     past_three='/content/drive/MyDrive/weights/CN_v_AD/c51bf83c4455416e8bc8b1ebbc8b75ca/fold_1_weights-2020-04-29_13_00_49'
     model = load_model("camull", past_three)
     model_uuid = train_camull(ld_helper, epochs=1)
