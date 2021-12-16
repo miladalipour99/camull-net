@@ -151,6 +151,6 @@ def main():
     model = load_model("camull", past_three[0])
     print(model)
     uuid  = train_camull(ld_helper, model=model, epochs=1)
-    evaluate_model(device, train_camull.variable, ld_helper)
+    evaluate_model(DEVICE, train_camull.variable, ld_helper)
 
 main()
