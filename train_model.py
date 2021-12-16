@@ -135,25 +135,30 @@ def start(ld_helper, epochs=40, model_uuid=None):
 
 
 def main():
+    ld_helper = LoaderHelper(task=Task.sMCI_v_pMCI)
+    model_uuid = train_camull(ld_helper, epochs=1)
+    evaluate_model(DEVICE, train_camull.variable, ld_helper)
+    
     '''Main function of the module.'''
     #NC v AD
-    ld_helper = LoaderHelper(task=Task.NC_v_AD)
-    model_uuid = train_camull(ld_helper, epochs=1)
+  #@  ld_helper = LoaderHelper(task=Task.NC_v_AD)
+  #@  model_uuid = train_camull(ld_helper, epochs=1)
     #print(train_camull.variable)
     #print(type(train_camull.variable))
-    evaluate_model(DEVICE, train_camull.variable, ld_helper)
+  #@  evaluate_model(DEVICE, train_camull.variable, ld_helper)
 
     #transfer learning for pMCI v sMCI
-    ld_helper.change_task(Task.sMCI_v_pMCI)
-    past_one="/content/weights/NC_v_AD/" + train_camull.variable
+  #@  ld_helper.change_task(Task.sMCI_v_pMCI)
+  #@  past_one="/content/weights/NC_v_AD/" + train_camull.variable
  #   print(past_one)
-    past_two=past_one+"/"+"*"
+  #@  past_two=past_one+"/"+"*"
  #   print(past_two)
-    past_three=glob.glob(past_two)
+  #@  past_three=glob.glob(past_two)
  #   print(past_three[0])
-    model = load_model("camull", past_three[0])
+  #@  model = load_model("camull", past_three[0])
  #   print(model)
-    uuid  = train_camull(ld_helper, model=model, epochs=1)
-    evaluate_model(DEVICE, train_camull.variable, ld_helper)
+  #@  uuid  = train_camull(ld_helper, model=model, epochs=1)
+  #@  evaluate_model(DEVICE, train_camull.variable, ld_helper)
+     
 
 main()
