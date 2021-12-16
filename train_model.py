@@ -140,9 +140,9 @@ def main():
     evaluate_model(DEVICE, train_camull.variable, ld_helper)
 
     #transfer learning for pMCI v sMCI
-    #ld_helper.change_task(Task.sMCI_v_pMCI)
-    #model = load_model("camull", uuid)
-    #uuid  = train_camull(ld_helper, model=model, epochs=5)
-    #evaluate_model(device, uuid, ld_helper)
+    ld_helper.change_task(Task.sMCI_v_pMCI)
+    model = load_model("camull", train_camull.variable)
+    uuid  = train_camull(ld_helper, model=model, epochs=5)
+    evaluate_model(device, train_camull.variable, ld_helper)
 
 main()
