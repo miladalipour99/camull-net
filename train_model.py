@@ -112,8 +112,6 @@ def train_camull(ld_helper, k_folds=5, model=None, epochs=40):
         save_weights(model, uuid_, fold=k_ind+1, task=task)
 
         print("Completed fold {}/{}.".format(k_ind, k_folds))
-    #    print(uuid_)
-
     return uuid_
 
 def start(ld_helper, epochs=40, model_uuid=None):
@@ -136,7 +134,6 @@ def main():
     #NC v AD
     ld_helper = LoaderHelper(task=Task.NC_v_AD)
     model_uuid = train_camull(ld_helper, epochs=1)
-    print(uuid_)
     evaluate_model(DEVICE, "c51bf83c4455416e8bc8b1ebbc8b75ca", ld_helper)
 
     #transfer learning for pMCI v sMCI
