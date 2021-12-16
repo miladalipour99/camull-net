@@ -112,6 +112,7 @@ def train_camull(ld_helper, k_folds=5, model=None, epochs=40):
         save_weights(model, uuid_, fold=k_ind+1, task=task)
 
         print("Completed fold {}/{}.".format(k_ind, k_folds))
+    print(uuid_)
     return uuid_
 
 def start(ld_helper, epochs=40, model_uuid=None):
