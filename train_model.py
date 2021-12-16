@@ -135,9 +135,9 @@ def main():
     #NC v AD
     ld_helper = LoaderHelper(task=Task.NC_v_AD)
     model_uuid = train_camull(ld_helper, epochs=1)
-    print(train_camull.variable)
-    print(type(train_camull.variable))
-    evaluate_model(DEVICE, uuid, ld_helper)
+    #print(train_camull.variable)
+    #print(type(train_camull.variable))
+    evaluate_model(DEVICE, train_camull.variable, ld_helper)
 
     #transfer learning for pMCI v sMCI
     #ld_helper.change_task(Task.sMCI_v_pMCI)
