@@ -58,10 +58,10 @@ def evaluate_model(device_in, uuid, ld_helper):
     fold = 0
 
     srch_path = "/content/weights/{}/".format(task_str) + uuid + "/*"
+    print(srch_path)
     for path in glob.glob(srch_path):
 
         print("Evaluating fold: ", fold + 1)
-        print(srch_path)
         model   = load_cam_model(path)
         model.to(device)
         test_dl = ld_helper.get_test_dl(fold)
