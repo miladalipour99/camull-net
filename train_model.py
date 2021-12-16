@@ -147,9 +147,9 @@ def main():
     past_two=past_one+"/"+"*"
  #   print(past_two)
     past_three=glob.glob(past_two)
-    print(past_three[0])
+ #   print(past_three[0])
     model = load_model("camull", past_three[0])
-    print(model)
+ #   print(model)
     uuid  = train_camull(ld_helper, model=model, epochs=1)
     evaluate_model(DEVICE, train_camull.variable, ld_helper)
 
