@@ -100,14 +100,16 @@ def train_camull(ld_helper, k_folds=5, model=None, epochs=40):
     task = ld_helper.get_task()
     uuid_ = uuid.uuid4().hex
     model_cop = model
-
+    print("##################################################print(model_cop)")
+    print(model_cop)
     for k_ind in range(k_folds):
 
         if model_cop is None:
             model = build_arch()
         else:
             model = model_cop
-
+        print("##################################################print(model)")
+        print(model)
         train_dl = ld_helper.get_train_dl(k_ind)
         train_loop(model, train_dl, epochs)
         save_weights(model, uuid_, fold=k_ind+1, task=task)
