@@ -115,9 +115,14 @@ class LoaderHelper:
 
     
     def get_train_dl(self, fold_ind, shuffle=True):
-
+        
+        print(self.dataset)
         train_ds = Subset(self.dataset, self.indices[fold_ind][0])
+        print("###################################################")
+        print(train_ds)
         train_dl = DataLoader(train_ds, batch_size=4, shuffle=shuffle, num_workers=4, drop_last=True)
+        print("*****************************************************")
+        print(train_dl)
 
         return train_dl
 
