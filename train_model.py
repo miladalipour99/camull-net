@@ -136,7 +136,7 @@ def start(ld_helper, epochs=40, model_uuid=None):
 
 def main():
     ld_helper = LoaderHelper(task=Task.NC_v_AD)
-    model_uuid = train_camull(ld_helper, epochs=1)
+    model_uuid = train_camull(ld_helper, epochs=40)
     evaluate_model(DEVICE, train_camull.variable, ld_helper)
    # ld_helper.change_task(Task.sMCI_v_pMCI)
     ld_helper = LoaderHelper(task=Task.sMCI_v_pMCI)
@@ -144,7 +144,7 @@ def main():
     past_two=past_one+"/"+"*"
     past_three=glob.glob(past_two)
     model = load_model("camull", past_three[0])
-    model_uuid = train_camull(ld_helper, epochs=1)
+    model_uuid = train_camull(ld_helper, epochs=40)
     evaluate_model(DEVICE, train_camull.variable, ld_helper)
     
     '''Main function of the module.'''
